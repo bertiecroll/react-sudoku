@@ -1,0 +1,36 @@
+.Grid {
+  width: 28.625em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.GridRow {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.GridRow:first-child {
+  border-top: 3px solid black;
+}
+
+.GridRow:nth-child(3n) {
+  border-bottom: 3px solid black;
+}
+
+.GridCell {
+  width: 3em;
+  height: 3em;
+  border: 1px solid black;
+  line-height: 3em;
+  text-align: center;
+}
+
+.GridCell:first-child {
+  border-left: 3px solid black;
+}
+
+.GridCell:nth-child(3n) {
+  border-right: 3px solid black;
+}
