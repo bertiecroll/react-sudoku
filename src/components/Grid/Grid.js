@@ -6,11 +6,12 @@ import { GridRow } from './GridRow'
 export const Grid = (props) => {
   return (
     <div className="Grid">
-      {props.numbers.map(number => <GridRow numbers={number} />)}
+      {props.puzzle.map((row, index) => <GridRow key={index} row={row} selected={index === props.selectedCell.row} selectedCell={props.selectedCell} />)}
     </div>
   )
 }
 
 Grid.propTypes = {
-  numbers: PropTypes.array.isRequired
+  puzzle: PropTypes.array.isRequired,
+  selectedCell: PropTypes.object,
 }

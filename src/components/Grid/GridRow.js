@@ -6,11 +6,11 @@ import { GridCell } from './GridCell'
 export const GridRow = (props) => {
   return (
     <div className="GridRow">
-      {props.numbers.map(number => <GridCell number={number} />)}
+      {props.row.map((number, index) => <GridCell key={index} number={number} selected={ props.selected && index === props.selectedCell.column } />)}
     </div>
   )
 }
 
 GridRow.propTypes = {
-  numbers: PropTypes.array.isRequired
+  row: PropTypes.array.isRequired
 }
