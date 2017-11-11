@@ -4,13 +4,12 @@ import * as actions from './grid'
 describe('grid actions', () => {
   describe('#updateSelectedCell', () => {
     it('creates an action to update selected cell', () => {
+      const cell = { row: 1, column: 1, value: 2 }
       const expectedAction = {
         type: UPDATE_SELECTED_CELL,
-        row: 1,
-        column: 1,
-        value: 2,
+        cell
       }
-      expect(actions.updateSelectedCell(1,1,2)).toEqual(expectedAction)
+      expect(actions.updateSelectedCell(cell)).toEqual(expectedAction)
     })
   })
 
