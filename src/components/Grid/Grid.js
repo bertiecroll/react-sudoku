@@ -6,7 +6,7 @@ import { GridRow } from './GridRow'
 export const Grid = (props) => {
   return (
     <div className="Grid">
-      {props.puzzle.map((row, index) => <GridRow key={index} row={row} selected={index === props.selectedCell.row} selectedCell={props.selectedCell} />)}
+      {props.puzzle.map((row, index) => <GridRow key={index} row={row} rowIndex={index} />)}
     </div>
   )
 }
