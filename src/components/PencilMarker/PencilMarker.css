@@ -1,0 +1,8 @@
+.PencilMarker .NumberSelect div {
+  background-color: #fff;
+  color: #67DAF9;
+}
+
+.PencilMarker .NumberSelect .not-available {
+  color: white;
+}

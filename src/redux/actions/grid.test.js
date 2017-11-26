@@ -1,25 +1,50 @@
-import { UPDATE_SELECTED_CELL, UPDATE_PUZZLE_CELL } from 'redux/actionTypes'
+import { UPDATE_SELECTED_CELL_ID, MARK_CELL_COMPLETED, ADD_PENCIL_MARK, REMOVE_PENCIL_MARK } from 'redux/actionTypes'
 import * as actions from './grid'
 
 describe('grid actions', () => {
-  describe('#updateSelectedCell', () => {
+  describe('#updateSelectedCellId', () => {
     it('creates an action to update selected cell', () => {
-      const cell = { row: 1, column: 1, value: 2 }
+      const cellId = '0,0'
       const expectedAction = {
-        type: UPDATE_SELECTED_CELL,
-        cell
+        type: UPDATE_SELECTED_CELL_ID,
+        cellId
       }
-      expect(actions.updateSelectedCell(cell)).toEqual(expectedAction)
+      expect(actions.updateSelectedCellId(cellId)).toEqual(expectedAction)
     })
   })
 
-  describe('#updatePuzzleCell', () => {
-    it('creates an action to update the puzzle cell', () => {
+  describe('#markCellCompleted', () => {
+    it('creates an action to mark given cell as completed', () => {
+      const cellId = '0,0'
       const expectedAction = {
-        type: UPDATE_PUZZLE_CELL,
-        number: 1,
+        type: MARK_CELL_COMPLETED,
+        cellId,
       }
-      expect(actions.updatePuzzleCell(1)).toEqual(expectedAction)
+      expect(actions.markCellCompleted('0,0')).toEqual(expectedAction)
+    })
+  })
+
+  describe('#addPencilMark', () => {
+    it('adds given value to cells pencil marks array', () => {
+      const cellId = '0,0'
+      const expectedAction = {
+        type: ADD_PENCIL_MARK,
+        cellId,
+        value: 1,
+      }
+      expect(actions.addPencilMark('0,0', 1)).toEqual(expectedAction)
+    })
+  })
+
+  describe('#removePencilMark', () => {
+    it('removes given value to cells pencil marks array', () => {
+      const cellId = '0,0'
+      const expectedAction = {
+        type: REMOVE_PENCIL_MARK,
+        cellId,
+        value: 1,
+      }
+      expect(actions.removePencilMark('0,0', 1)).toEqual(expectedAction)
     })
   })
 })
