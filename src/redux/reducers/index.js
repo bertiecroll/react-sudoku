@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import grid from './grid'
+import cells from './grid'
 import fault from './fault'
+import controlBar from './controlBar'
 
 export default combineReducers({
-  grid,
+  cells,
   fault,
+  controlBar,
 })
