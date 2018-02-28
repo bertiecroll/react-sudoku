@@ -1,21 +1,21 @@
-import { INCREMENT_FAULT_COUNTER, SET_FAULT_CELL } from 'redux/actionTypes'
+import { INCREMENT_FAULT_COUNTER, UPDATE_FAULT_CELL_ID } from 'redux/actionTypes'
 
-export const incrementFaultCounter = (state, action) => (
+export const incrementFaultCounter = state => (
   { ...state, faultCount: state.faultCount + 1, }
 )
-export const setFaultCell = (state, action) => (
-  { ...state, faultCell: { row: action.row, column: action.column } }
+export const updateFaultCellId = (state, action) => (
+  { ...state, faultCellId: action.id }
 )
 
 const intialState = {
   faultCount: 0,
-  faultCell: { row: null, column: null },
+  faultCellId: null,
 }
 
 export default function fault(state = intialState, action) {
   switch (action.type) {
-    case INCREMENT_FAULT_COUNTER: return incrementFaultCounter(state, action)
-    case SET_FAULT_CELL: return setFaultCell(state, action)
+    case INCREMENT_FAULT_COUNTER: return incrementFaultCounter(state)
+    case UPDATE_FAULT_CELL_ID: return updateFaultCellId(state, action)
     default: return state
   }
 }

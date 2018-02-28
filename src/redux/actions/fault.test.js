@@ -1,4 +1,4 @@
-import { INCREMENT_FAULT_COUNTER, SET_FAULT_CELL } from 'redux/actionTypes'
+import { INCREMENT_FAULT_COUNTER, UPDATE_FAULT_CELL_ID } from 'redux/actionTypes'
 import * as actions from './fault'
 
 describe('fault actions', () => {
@@ -11,14 +11,13 @@ describe('fault actions', () => {
     })
   })
 
-  describe('#setFaultCell', () => {
-    it('creates an action to set fault cell', () => {
+  describe('#updateFaultCellId', () => {
+    it('creates an action to update fault cell id to given id', () => {
       const expectedAction = {
-        type: SET_FAULT_CELL,
-        row: 1,
-        column: 1,
+        type: UPDATE_FAULT_CELL_ID,
+        id: '0,1'
       }
-      expect(actions.setFaultCell(1, 1)).toEqual(expectedAction)
+      expect(actions.updateFaultCellId('0,1')).toEqual(expectedAction)
     })
   })
 })

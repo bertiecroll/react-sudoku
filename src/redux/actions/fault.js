@@ -1,4 +1,4 @@
-import { INCREMENT_FAULT_COUNTER, SET_FAULT_CELL } from 'redux/actionTypes'
+import { INCREMENT_FAULT_COUNTER, UPDATE_FAULT_CELL_ID } from 'redux/actionTypes'
 
 export const incrementFaultCounter = () => ({ type: INCREMENT_FAULT_COUNTER })
-export const setFaultCell = (row, column) => ({ type: SET_FAULT_CELL, row, column })
+export const updateFaultCellId = id => ({ type: UPDATE_FAULT_CELL_ID, id })

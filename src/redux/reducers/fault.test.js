@@ -1,5 +1,5 @@
 import reducer from './fault'
-import { INCREMENT_FAULT_COUNTER, SET_FAULT_CELL } from 'redux/actionTypes'
+import { INCREMENT_FAULT_COUNTER, UPDATE_FAULT_CELL_ID } from 'redux/actionTypes'
 import * as actions from 'redux/actions/fault'
 
 describe('fault reducer', () => {
@@ -12,20 +12,20 @@ describe('fault reducer', () => {
     it('increments fault count by one', () => {
       const expectedState = {
         faultCount: 1,
-        faultCell: { row: null, column: null }
+        faultCellId: null
       }
       const result = reducer(undefined, actions.incrementFaultCounter())
       expect(result).toEqual(expectedState)
     })
   })
 
-  describe(`${SET_FAULT_CELL}`, () => {
-    it('sets fault cell', () => {
+  describe(`${UPDATE_FAULT_CELL_ID}`, () => {
+    it('updates faultCellId to given id', () => {
       const expectedState = {
         faultCount: 0,
-        faultCell: { row: 1, column: 1 }
+        faultCellId: '0,1'
       }
-      const result = reducer(undefined, actions.setFaultCell(1,1))
+      const result = reducer(undefined, actions.updateFaultCellId('0,1'))
       expect(result).toEqual(expectedState)
     })
   })
