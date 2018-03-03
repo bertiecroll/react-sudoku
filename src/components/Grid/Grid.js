@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Grid.css'
 import { GridRow } from './GridRow'
+import { mapWithIndex } from 'lib/utils'
 
 export const Grid = (props) => {
   return (
     <div className="Grid">
-      {props.puzzle.map((row, index) => <GridRow key={index} row={row} rowIndex={index} />)}
+      { mapWithIndex((cells, key) => <GridRow key={key} cells={cells} />)(props.cellsByRow) }
     </div>
   )
 }
 
 Grid.propTypes = {
-  puzzle: PropTypes.array.isRequired,
-  selectedCell: PropTypes.object,
+  cellsByRow: PropTypes.object.isRequired,
 }
