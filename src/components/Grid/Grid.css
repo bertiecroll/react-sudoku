@@ -3,71 +3,24 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column-reverse;
 }
 
 .GridRow {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   flex-direction: row;
 }
 
-.GridRow:nth-child(3n) {
+.GridRow:nth-last-child(3n) {
   border-bottom: 5px solid #777;
 }
 
-.GridRow:last-child {
+.GridRow:nth-last-child(3n + 1) .GridCell {
+  padding-top: .25em;
+}
+
+.GridRow:first-child {
   border-bottom: none;
-}
-
-.GridRow:first-child .GridCell {
-  border-top: none;
-}
-
-.GridRow:last-child .GridCell {
-  border-bottom: none;
-}
-
-.GridCell {
-  width: 2.5em;
-  height: 2.5em;
-  padding: .1em;
-  text-align: center;
-}
-
-.GridCell:first-child {
-  border-left: none;
-}
-
-.GridCell:nth-child(3n) {
-  border-right: 5px solid #777;
-}
-
-.GridCell:nth-child(3n + 1) {
-  padding-left: .2em;
-}
-
-.GridCell:last-child {
-  border-right: none;
-}
-
-.GridCell div {
-  width: 2.4em;
-  height: 2.4em;
-  border-radius: 5px;
-  line-height: 2.4em;
-}
-
-.vacant {
-  background-color: #ccc;
-  box-shadow: inset 0 0 10px #000;
-}
-
-.occupied {
-  background-color: #67DAF9;
-  box-shadow: 0 1px 1px 0px #000;
-  color: #fff;
-}
-
-.cell-selected {
-  background-color: #67DAF9;
 }
