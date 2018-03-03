@@ -1,7 +1,53 @@
-import { UPDATE_SELECTED_CELL_ID, MARK_CELL_COMPLETED, ADD_PENCIL_MARK, REMOVE_PENCIL_MARK } from 'redux/actionTypes'
+import {
+  GENERATE_CELLS,
+  GENERATE_CELLS_SUCCEEDED,
+  GENERATE_CELLS_FAILED,
+  UPDATE_SELECTED_CELL_ID,
+  MARK_CELL_COMPLETED,
+  ADD_PENCIL_MARK,
+  REMOVE_PENCIL_MARK,
+} from 'redux/actionTypes'
 import * as actions from './grid'
 
 describe('grid actions', () => {
+  describe('#generateCells', () => {
+    it('creates an action to generate cells', () => {
+      const difficultyLevel = 'TEST'
+
+      const expectedAction = {
+        type: GENERATE_CELLS,
+        difficultyLevel
+      }
+      expect(actions.generateCells(difficultyLevel)).toEqual(expectedAction)
+    })
+  })
+
+  describe('#generateCellsSucceeded', () => {
+    it('creates an action to confirm generate cells succeeded', () => {
+      const cells = [
+        { id: '0,0', value: 1 },
+        { id: '1,0', value: 2 },
+        { id: '2,0', value: 3 },
+      ]
+      const expectedAction = {
+        type: GENERATE_CELLS_SUCCEEDED,
+        cells,
+      }
+      expect(actions.generateCellsSucceeded(cells)).toEqual(expectedAction)
+    })
+  })
+
+  describe('#generateCellFailed', () => {
+    it('creates an action to confirm generate cells failed', () => {
+      const error = 'Test error message'
+      const expectedAction = {
+        type: GENERATE_CELLS_FAILED,
+        error,
+      }
+      expect(actions.generateCellsFailed(error)).toEqual(expectedAction)
+    })
+  })
+
   describe('#updateSelectedCellId', () => {
     it('creates an action to update selected cell', () => {
       const cellId = '0,0'
