@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Puzzle renders ProgressBar, Grid and Control Bar when props.isLoading is false 1`] = `
+<div
+  className="Puzzle"
+>
+  <ProgressBar />
+  <Grid
+    cellsByRow={Object {}}
+  />
+  <Connect(ControlBar) />
+</div>
+`;
+
+exports[`Puzzle renders Spinner component when props.isLoading is true 1`] = `
+<div
+  className="Puzzle"
+>
+  <Spinner />
+</div>
+`;
