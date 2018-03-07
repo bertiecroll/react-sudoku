@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NumberButton renders div with not-available className when props.isAvailable is false 1`] = `
+<div
+  className="NumberButton not-available"
+  onClick={[Function]}
+>
+  1
+</div>
+`;
+
+exports[`NumberButton renders div with when props.isAvailable is true 1`] = `
+<div
+  className="NumberButton "
+  onClick={[Function]}
+>
+  1
+</div>
+`;

@@ -1,0 +1,34 @@
+.NumberButton {
+  width: 2em;
+  height: 2em;
+  margin: .15em;
+  line-height: 2em;
+  font-size: 1.5em;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 0px #000;
+}
+
+.NumberButton:nth-child(odd) {
+  transform: rotate(5deg);
+}
+
+.NumberButton:nth-child(even) {
+  transform: rotate(-5deg);
+}
+
+.NumberButton:hover {
+  transform: scale(1.1);
+  transition: transform .7s;
+  cursor: pointer;
+}
+
+.not-available {
+  background-color: grey;
+  opacity: 0.2;
+}
+
+.not-available:hover {
+  transform: none;
+  cursor: not-allowed;
+}

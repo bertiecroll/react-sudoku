@@ -3,23 +3,17 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import './NumberSelect.css'
+import NumberButton from 'components/NumberButton'
 import { allNumbers, availableNumbers } from 'redux/selectors/cells'
 
-export const NumberSelect = ({ allNumbers, availableNumbers, onClickHandler }) => {
+export function NumberSelect ({ allNumbers, availableNumbers, onClickHandler }) {
   return (
     <div className="NumberSelect">
       {allNumbers.map(number => {
           const isAvailable = availableNumbers.includes(number)
           const handleOnClick = isAvailable ? () => onClickHandler(number) : () => {}
 
-          return (
-            <div
-              className={isAvailable ? '' : 'not-available'}
-              key={number}
-              onClick={handleOnClick}>
-              {number}
-            </div>
-          )
+          return <NumberButton number={number} isAvailable={isAvailable} onClickHandler={handleOnClick} />
         })
       }
     </div>
