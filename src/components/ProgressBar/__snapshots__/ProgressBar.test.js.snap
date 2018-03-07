@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar renders FaultCounter and Timer components 1`] = `
+<div
+  className="ProgressBar"
+>
+  <Connect(FaultCounter) />
+  <Timer />
+</div>
+`;

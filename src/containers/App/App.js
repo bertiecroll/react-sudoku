@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import logo from 'images/logo.svg';
 import './App.css';
 
-import { Grid } from 'components/Grid'
-import { cellsByRow } from 'redux/selectors/cells'
-import ControlBar from 'components/ControlBar'
+import Puzzle from 'components/Puzzle'
 
 export class App extends Component {
 
@@ -17,21 +14,12 @@ export class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2 className="App-title">React Sudoku</h2>
         </header>
-        <div className="App-content">
-          <Grid cellsByRow={this.props.cellsByRow} />
-          <ControlBar />
-        </div>
+        <Puzzle />
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  cellsByRow: cellsByRow(state),
-})
+const mapStateToProps = state => ({})
 
 export default connect(mapStateToProps)(App)
-
-App.propTypes = {
-  cellsByRow: PropTypes.object.isRequired,
-}

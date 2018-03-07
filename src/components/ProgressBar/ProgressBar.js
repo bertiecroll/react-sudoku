@@ -4,7 +4,7 @@ import './ProgressBar.css'
 import FaultCounter from 'components/FaultCounter'
 import Timer from 'components/Timer'
 
-export const ProgressBar = props => {
+export default function ProgressBar (props) {
   return (
     <div className="ProgressBar">
       < FaultCounter />
@@ -12,5 +12,3 @@ export const ProgressBar = props => {
     </div>
   )
 }
-
-export default ProgressBar

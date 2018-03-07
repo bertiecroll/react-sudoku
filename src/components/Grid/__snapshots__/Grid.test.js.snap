@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid renders a GridRow for each props.cellsByRow, passing key and cells to each GridRow 1`] = `
+<div
+  className="Grid"
+>
+  <GridRow
+    cells={
+      Array [
+        Object {
+          "id": "0,0",
+          "value": 1,
+        },
+        Object {
+          "id": "1,0",
+          "value": 2,
+        },
+        Object {
+          "id": "2,0",
+          "value": 3,
+        },
+      ]
+    }
+    key="0"
+  />
+  <GridRow
+    cells={
+      Array [
+        Object {
+          "id": "0,1",
+          "value": 4,
+        },
+        Object {
+          "id": "1,1",
+          "value": 5,
+        },
+        Object {
+          "id": "2,1",
+          "value": 6,
+        },
+      ]
+    }
+    key="1"
+  />
+  <GridRow
+    cells={
+      Array [
+        Object {
+          "id": "0,2",
+          "value": 7,
+        },
+        Object {
+          "id": "1,2",
+          "value": 8,
+        },
+        Object {
+          "id": "2,2",
+          "value": 9,
+        },
+      ]
+    }
+    key="2"
+  />
+</div>
+`;
