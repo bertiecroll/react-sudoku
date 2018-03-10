@@ -5,7 +5,6 @@ import NumberSelect from 'components/NumberSelect'
 
 describe('PencilMarker', () => {
   let wrapper
-  // our mock redux action functions
   const mockAddPencilMark = jest.fn()
   const mockRemovePencilMark = jest.fn()
 
