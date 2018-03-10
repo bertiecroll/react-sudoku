@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwitchButton renders two button components and correct styles when props.currentMarker equals PEN_MARKER 1`] = `
+<div
+  className="SwitchButton"
+>
+  <button
+    className="selected"
+    onClick={[Function]}
+  >
+    Pen
+  </button>
+  <button
+    className=""
+    onClick={[Function]}
+  >
+    Pencil
+  </button>
+</div>
+`;
+
+exports[`SwitchButton renders two button components and correct styles when props.currentMarker equals PENCIL_MARKER 1`] = `
+<div
+  className="SwitchButton"
+>
+  <button
+    className=""
+    onClick={[Function]}
+  >
+    Pen
+  </button>
+  <button
+    className="selected"
+    onClick={[Function]}
+  >
+    Pencil
+  </button>
+</div>
+`;

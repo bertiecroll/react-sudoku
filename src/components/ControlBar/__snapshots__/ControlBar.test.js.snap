@@ -4,7 +4,7 @@ exports[`ControlBar renders SwitchButton with PenMarker when props.currentMarker
 <div
   className="ControlBar"
 >
-  <Connect(Component) />
+  <Connect(SwitchButton) />
   <Connect(PenMarker) />
 </div>
 `;
@@ -13,7 +13,7 @@ exports[`ControlBar renders SwitchButton with PencilMarker when props.currentMar
 <div
   className="ControlBar"
 >
-  <Connect(Component) />
+  <Connect(SwitchButton) />
   <Connect(PencilMarker) />
 </div>
 `;

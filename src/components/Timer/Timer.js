@@ -29,6 +29,7 @@ export default class Timer extends Component {
   render () {
     const seconds = Math.floor(this.state.elapsedTime / 1000) % 60
     const minutes = Math.floor(this.state.elapsedTime / 1000 / 60)
+
     return (
       <div className="Timer">
         Timer: {displayCount(minutes)}:{displayCount(seconds)}
