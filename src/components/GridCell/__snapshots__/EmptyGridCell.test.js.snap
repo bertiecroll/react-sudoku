@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyGridCell renders GridCell passing render prop function 1`] = `
+<Connect(GridCell)
+  cell={
+    Object {
+      "id": "0,0",
+      "pencilMarks": Array [
+        1,
+        2,
+        3,
+      ],
+      "value": 1,
+    }
+  }
+  render={[Function]}
+/>
+`;

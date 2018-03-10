@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import map from 'lodash/fp/map'
 
 import './NumberSelect.css'
 import NumberButton from 'components/NumberButton'
@@ -20,12 +21,13 @@ export function NumberSelect ({ selectedCell, allNumbers, availableNumbers, onCl
 
   return (
     <div className="NumberSelect">
-      {allNumbers.map(number => {
+      {
+        map(number => {
           const isAvailable = availableNumbers.includes(number)
           const handleOnClick = isAvailable ? () => onClickHandler(number) : null
 
           return <NumberButton key={number} number={number} isAvailable={isAvailable} onClickHandler={handleOnClick} />
-        })
+        })(allNumbers)
       }
     </div>
   )

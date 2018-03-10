@@ -16,7 +16,11 @@ describe('GridCell', () => {
         cell={cell}
         selectedCell={selectedCell}
         updateSelectedCellId={mockUpdateSelectedCellId}
-        render={props => <div>Test render component {props.selectedCell.id}</div>}
+        render={props =>
+          <div className="Test" onCellClick={props.onCellClick}>
+            Test render component {props.selectedCell.id}
+          </div>
+        }
       />
     )
   })
@@ -25,5 +29,11 @@ describe('GridCell', () => {
 
   it('renders div and function passed using props.render', () => {
     expect(wrapper).toMatchSnapshot()
+  })
+
+  it('calls updateSelectedCellId when onCellClick is called', () => {
+    wrapper.find('.Test').props().onCellClick()
+
+    expect(mockUpdateSelectedCellId).toHaveBeenCalledWith('0,0')
   })
 })
