@@ -7,17 +7,18 @@ import PenMarker from 'components/PenMarker'
 import PencilMarker from 'components/PencilMarker'
 import { PEN_MARKER, currentMarker } from 'redux/selectors/controlBar'
 
-export const ControlBar = props => {
+export function ControlBar ({ currentMarker }) {
+  const Marker = currentMarker === PEN_MARKER ? PenMarker : PencilMarker
+
   return (
-    <div>
+    <div className="ControlBar">
       <SwitchButton />
-      { props.currentMarker === PEN_MARKER ? <PenMarker /> : <PencilMarker /> }
+      <Marker />
     </div>
   )
 }
 
 const mapStateToProps = state => ({ currentMarker: currentMarker(state) })
-
 export default connect(mapStateToProps)(ControlBar)
 
 ControlBar.propTypes = {

@@ -17,11 +17,10 @@ export default function NumberButton ({ number, isAvailable, onClickHandler }) {
 
 NumberButton.defaultProps = {
   isAvailable: false,
-  onClickHandler: () => {},
 }
 
 NumberButton.propTypes = {
   number: PropTypes.number.isRequired,
   isAvailable: PropTypes.bool.isRequired,
-  onClickHandler: PropTypes.func.isRequired,
+  onClickHandler: PropTypes.func,
 }

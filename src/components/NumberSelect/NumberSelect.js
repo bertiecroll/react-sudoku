@@ -4,16 +4,27 @@ import PropTypes from 'prop-types'
 
 import './NumberSelect.css'
 import NumberButton from 'components/NumberButton'
-import { allNumbers, availableNumbers } from 'redux/selectors/cells'
+import { selectedCell, allNumbers, availableNumbers } from 'redux/selectors/cells'
 
-export function NumberSelect ({ allNumbers, availableNumbers, onClickHandler }) {
+export function NumberSelect ({ selectedCell, allNumbers, availableNumbers, onClickAction }) {
+
+  const onClickHandler = selectedNumber => {
+    if (!selectedCell) {
+      console.log('no cell selected')
+    } else if (selectedCell.completed) {
+      console.log('selected cell already completed')
+    } else {
+      onClickAction(selectedCell, selectedNumber)
+    }
+  }
+
   return (
     <div className="NumberSelect">
       {allNumbers.map(number => {
           const isAvailable = availableNumbers.includes(number)
-          const handleOnClick = isAvailable ? () => onClickHandler(number) : () => {}
+          const handleOnClick = isAvailable ? () => onClickHandler(number) : null
 
-          return <NumberButton number={number} isAvailable={isAvailable} onClickHandler={handleOnClick} />
+          return <NumberButton key={number} number={number} isAvailable={isAvailable} onClickHandler={handleOnClick} />
         })
       }
     </div>
@@ -21,6 +32,7 @@ export function NumberSelect ({ allNumbers, availableNumbers, onClickHandler }) 
 }
 
 const mapStateToProps = state => ({
+  selectedCell: selectedCell(state),
   allNumbers: allNumbers(state),
   availableNumbers: availableNumbers(state),
 })
@@ -28,7 +40,8 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(NumberSelect)
 
 NumberSelect.propTypes = {
+  selectedCell: PropTypes.object,
   allNumbers: PropTypes.array.isRequired,
   availableNumbers: PropTypes.array.isRequired,
-  onClickHandler: PropTypes.func.isRequired,
+  onClickAction: PropTypes.func.isRequired,
 }

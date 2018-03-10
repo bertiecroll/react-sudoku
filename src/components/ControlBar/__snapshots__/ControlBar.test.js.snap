@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ControlBar renders SwitchButton with PenMarker when props.currentMarker is PEN_MARKER 1`] = `
+<div
+  className="ControlBar"
+>
+  <Connect(Component) />
+  <Connect(PenMarker) />
+</div>
+`;
+
+exports[`ControlBar renders SwitchButton with PencilMarker when props.currentMarker is PENCIL_MARKER 1`] = `
+<div
+  className="ControlBar"
+>
+  <Connect(Component) />
+  <Connect(PencilMarker) />
+</div>
+`;

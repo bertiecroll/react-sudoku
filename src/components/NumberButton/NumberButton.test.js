@@ -12,4 +12,11 @@ describe('NumberButton', () => {
     const wrapper = shallow(<NumberButton number={1} />)
     expect(wrapper).toMatchSnapshot()
   })
+
+  it('calls onClickHandler when clicked', () => {
+    const onClickMock = jest.fn()
+    const wrapper = shallow(<NumberButton number={1} onClickHandler={onClickMock} />)
+    wrapper.simulate('click')
+    expect(onClickMock).toHaveBeenCalled()
+  })
 })

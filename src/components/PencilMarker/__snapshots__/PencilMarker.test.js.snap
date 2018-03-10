@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PencilMarker renders NumberSelect component passing onClickAction 1`] = `
+<div
+  className="PencilMarker"
+>
+  <Connect(NumberSelect)
+    onClickAction={[Function]}
+  />
+</div>
+`;

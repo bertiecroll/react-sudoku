@@ -5,34 +5,25 @@ import PropTypes from 'prop-types'
 import './PencilMarker.css'
 import NumberSelect from 'components/NumberSelect'
 import { addPencilMark, removePencilMark } from 'redux/actions/grid'
-import { selectedCell } from 'redux/selectors/cells'
 
-export const PencilMarker = ({ selectedCell, addPencilMark, removePencilMark }) => {
-  const onClickHandle = (selectedNumber) => {
-    const { id, completed, pencilMarks } = selectedCell
-    if (!completed) {
-      pencilMarks.includes(selectedNumber) ? removePencilMark(id, selectedNumber) : addPencilMark(id, selectedNumber)
-    }
+export function PencilMarker ({ addPencilMark, removePencilMark }) {
+
+  const onClickAction = (selectedCell, selectedNumber) => {
+    const { id, pencilMarks } = selectedCell
+    pencilMarks.includes(selectedNumber) ? removePencilMark(id, selectedNumber) : addPencilMark(id, selectedNumber)
   }
 
   return (
     <div className="PencilMarker">
-      <NumberSelect onClickHandler={onClickHandle} />
+      <NumberSelect onClickAction={onClickAction} />
     </div>
   )
 }
 
-const mapStateToProps = state => ({ selectedCell: selectedCell(state) })
 const mapDispatchToProps = { addPencilMark, removePencilMark }
-
-export default connect(mapStateToProps, mapDispatchToProps)(PencilMarker)
-
-PencilMarker.defaultProps = {
-  selectedCell: {},
-}
+export default connect(null, mapDispatchToProps)(PencilMarker)
 
 PencilMarker.propTypes = {
-  selectedCell: PropTypes.object,
-  addPencilMark: PropTypes.func.isRequired,
-  removePencilMark: PropTypes.func.isRequired,
+  addPencilMark: PropTypes.func,
+  removePencilMark: PropTypes.func,
 }

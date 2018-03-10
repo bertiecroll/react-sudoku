@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PencilMarker renders NumberButton component for each number in allNumbers array 1`] = `
+<div
+  className="NumberSelect"
+>
+  <NumberButton
+    isAvailable={true}
+    key="1"
+    number={1}
+    onClickHandler={[Function]}
+  />
+  <NumberButton
+    isAvailable={false}
+    key="2"
+    number={2}
+    onClickHandler={null}
+  />
+  <NumberButton
+    isAvailable={true}
+    key="3"
+    number={3}
+    onClickHandler={[Function]}
+  />
+  <NumberButton
+    isAvailable={false}
+    key="4"
+    number={4}
+    onClickHandler={null}
+  />
+  <NumberButton
+    isAvailable={true}
+    key="5"
+    number={5}
+    onClickHandler={[Function]}
+  />
+  <NumberButton
+    isAvailable={false}
+    key="6"
+    number={6}
+    onClickHandler={null}
+  />
+  <NumberButton
+    isAvailable={true}
+    key="7"
+    number={7}
+    onClickHandler={[Function]}
+  />
+  <NumberButton
+    isAvailable={false}
+    key="8"
+    number={8}
+    onClickHandler={null}
+  />
+  <NumberButton
+    isAvailable={true}
+    key="9"
+    number={9}
+    onClickHandler={[Function]}
+  />
+</div>
+`;

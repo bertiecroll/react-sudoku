@@ -4,43 +4,34 @@ import PropTypes from 'prop-types'
 
 import './PenMarker.css'
 import NumberSelect from 'components/NumberSelect'
-// import { incrementFaultCounter, setFaultCell } from 'redux/actions/fault'
+import { incrementFaultCounter, updateFaultCellId } from 'redux/actions/fault'
 import { markCellCompleted } from 'redux/actions/grid'
-import { selectedCell } from 'redux/selectors/cells'
 
-export const PenMarker = ({ selectedCell,  markCellCompleted }) => {
-  const onClickHandle = (selectedNumber) => {
-    const { id, completed, value } = selectedCell
-    if (!completed) {
-      if (value === selectedNumber) markCellCompleted(id)
-    } else {
-      console.log('no cell selected')
-    }
+export function PenMarker ({ markCellCompleted, incrementFaultCounter, updateFaultCellId }) {
+
+  const onClickAction = (selectedCell, selectedNumber) => {
+    const { id, value } = selectedCell
+    value === selectedNumber ? markCellCompleted(id) : showTempFaultAlert(id)
   }
 
-  // const showTempFaultMessage = () => {
-  //   props.incrementFaultCounter()
-  //   props.setFaultCell(props.selectedCell.row, props.selectedCell.column)
-  //   setTimeout(() => props.setFaultCell(null, null), 1000)
-  // }
+  const showTempFaultAlert = id => {
+    incrementFaultCounter()
+    updateFaultCellId(id)
+    setTimeout(() => updateFaultCellId(null), 1000)
+  }
 
   return (
     <div className="PenMarker">
-      <NumberSelect onClickHandler={onClickHandle} />
+      <NumberSelect onClickAction={onClickAction} />
     </div>
   )
 }
 
-const mapStateToProps = state => ({ selectedCell: selectedCell(state) })
-const mapDispatchToProps = { markCellCompleted }
-
-export default connect(mapStateToProps, mapDispatchToProps)(PenMarker)
-
-PenMarker.defaultProps = {
-  selectedCell: {},
-}
+const mapDispatchToProps = { markCellCompleted, incrementFaultCounter, updateFaultCellId }
+export default connect(null, mapDispatchToProps)(PenMarker)
 
 PenMarker.propTypes = {
-  selectedCell: PropTypes.object,
   markCellCompleted: PropTypes.func.isRequired,
+  incrementFaultCounter: PropTypes.func.isRequired,
+  updateFaultCellId: PropTypes.func.isRequired,
 }
