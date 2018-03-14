@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu renders component content 1`] = `
+<div
+  className="Menu"
+>
+  <h2>
+    Welcome
+  </h2>
+  <p>
+    Choose your difficulty level to begin.
+  </p>
+  <Link
+    replace={false}
+    to="/puzzle/easy"
+  >
+    Just Getting Started
+  </Link>
+  <Link
+    replace={false}
+    to="/puzzle/medium"
+  >
+    Middle Of The Road
+  </Link>
+  <Link
+    replace={false}
+    to="/puzzle/hard"
+  >
+    Ready For A Challenge
+  </Link>
+</div>
+`;
