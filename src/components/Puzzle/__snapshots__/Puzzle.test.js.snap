@@ -1,21 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Puzzle renders ProgressBar, Grid and Control Bar when props.isLoading is false 1`] = `
-<div
-  className="Puzzle"
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "canGo": [Function],
+      "createHref": [Function],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "TestKey",
+          "pathname": "/",
+          "search": "",
+        },
+      ],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "index": 0,
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "TestKey",
+        "pathname": "/",
+        "search": "",
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
 >
-  <ProgressBar />
-  <Grid
+  <Puzzle
     cellsByRow={Object {}}
   />
-  <Connect(ControlBar) />
-</div>
+</Router>
 `;
 
 exports[`Puzzle renders Spinner component when props.isLoading is true 1`] = `
-<div
-  className="Puzzle"
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "canGo": [Function],
+      "createHref": [Function],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "TestKey",
+          "pathname": "/",
+          "search": "",
+        },
+      ],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "index": 0,
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "TestKey",
+        "pathname": "/",
+        "search": "",
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
 >
-  <Spinner />
-</div>
+  <Puzzle
+    cellsByRow={Object {}}
+    isLoading={true}
+  />
+</Router>
 `;

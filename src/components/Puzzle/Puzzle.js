@@ -15,7 +15,8 @@ import { isFetching } from 'redux/selectors/cells'
 export class Puzzle extends Component {
 
   componentDidMount () {
-    if (this.props.generateCells) this.props.generateCells('MEDIUM')
+    const difficultyLevel = this.props.match.params.difficultyLevel
+    difficultyLevel && this.props.generateCells(difficultyLevel.toUpperCase())
   }
 
   render() {
