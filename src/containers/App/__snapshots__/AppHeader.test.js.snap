@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppHeader renders component content 1`] = `
+<header
+  className="AppHeader"
+>
+  <img
+    alt="logo"
+    className="App-logo"
+    src="logo.svg"
+  />
+  <h2
+    className="App-title"
+  >
+    React Sudoku
+  </h2>
+</header>
+`;

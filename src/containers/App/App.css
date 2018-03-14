@@ -1,5 +1,8 @@
 .App {
+  height: 100vh;
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -7,7 +10,7 @@
   height: 60px;
 }
 
-.App-header {
+.AppHeader {
   display: flex;
   font-variant: small-caps;
   padding: .5em;
@@ -15,11 +18,25 @@
   box-shadow: 0 1px 5px 0 #ccc;
 }
 
-.App-title {
+.AppContent {
+  flex: 1 0 auto;
 }
 
-.App-intro {
-  font-size: large;
+.AppFooter {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  font-variant: small-caps;
+  padding: .5em;
+  background-color: #999;
+}
+
+.AppFooter a {
+  margin: 1em 3em;
+}
+
+.AppFooter a:hover {
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppFooter renders component content 1`] = `
+<footer
+  className="AppFooter"
+>
+  <a>
+    Create React App
+  </a>
+  <a>
+    Redux
+  </a>
+  <a>
+    React Router
+  </a>
+</footer>
+`;

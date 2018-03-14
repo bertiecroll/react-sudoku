@@ -1,23 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom'
 import { connect } from 'react-redux'
-import logo from 'images/logo.svg';
 import './App.css';
 
+import { AppHeader, AppFooter } from 'containers/App'
 import Puzzle from 'components/Puzzle'
+import Menu from 'components/Menu'
 
-export class App extends Component {
-
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2 className="App-title">React Sudoku</h2>
-        </header>
-        <Puzzle />
-      </div>
-    )
-  }
+export function App () {
+  return (
+      <Router>
+        <div className="App">
+          <AppHeader />
+          <div className="AppContent">
+            <Switch>
+              <Route exact path="/" component={Menu} />
+              <Route path="/puzzle/:difficultyLevel(test|easy|medium|hard)" component={Puzzle} />
+              <Route render={() => <h1>Page Not Found</h1>} />
+            </Switch>
+          </div>
+          <AppFooter />
+        </div>
+      </Router>
+  )
 }
 
 const mapStateToProps = state => ({})
