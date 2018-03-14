@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import './PenMarker.css'
 import NumberSelect from 'components/NumberSelect'
 import { incrementFaultCounter, updateFaultCellId } from 'redux/actions/fault'
-import { markCellCompleted } from 'redux/actions/grid'
+import { markCellCompleted } from 'redux/actions/cells'
 
 export function PenMarker ({ markCellCompleted, incrementFaultCounter, updateFaultCellId }) {
 

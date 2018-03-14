@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import './GridCell.css'
-import { updateSelectedCellId } from 'redux/actions/grid'
+import { updateSelectedCellId } from 'redux/actions/cells'
 import { selectedCell } from 'redux/selectors/cells'
 import { faultCellId } from 'redux/selectors/fault'
 

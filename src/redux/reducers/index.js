@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import cells from './grid'
+import cells from './cells'
 import fault from './fault'
 import controlBar from './controlBar'
 

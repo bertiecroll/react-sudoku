@@ -21,7 +21,7 @@ const state = {
 
 describe('cells selectors', () => {
   describe('#moduleState', () => {
-    it('returns state of grid', () => {
+    it('returns state of cells', () => {
       expect(selectors.moduleState(state)).toEqual(state.cells)
     })
   })

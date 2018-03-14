@@ -7,9 +7,9 @@ import {
   ADD_PENCIL_MARK,
   REMOVE_PENCIL_MARK,
 } from 'redux/actionTypes'
-import * as actions from './grid'
+import * as actions from './cells'
 
-describe('grid actions', () => {
+describe('cells actions', () => {
   describe('#generateCells', () => {
     it('creates an action to generate cells', () => {
       const difficultyLevel = 'TEST'

@@ -9,7 +9,7 @@ import ControlBar from 'components/ControlBar'
 import ProgressBar from 'components/ProgressBar'
 import Spinner from 'components/Spinner'
 
-import { generateCells } from 'redux/actions/grid'
+import { generateCells } from 'redux/actions/cells'
 import { isFetching } from 'redux/selectors/cells'
 
 export class Puzzle extends Component {

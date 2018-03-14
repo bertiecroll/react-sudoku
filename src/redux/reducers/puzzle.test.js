@@ -1,7 +1,7 @@
 import reducer from './puzzle'
 import { PUZZLE_TOGGLE_COMPLETED, GENERATE_CELLS } from 'redux/actionTypes'
 import * as actions from 'redux/actions/puzzle'
-import { generateCells } from 'redux/actions/grid'
+import { generateCells } from 'redux/actions/cells'
 
 const initialState = {
   completed: false,

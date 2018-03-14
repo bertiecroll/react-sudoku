@@ -1,4 +1,4 @@
-import reducer from './grid'
+import reducer from './cells'
 import {
   GENERATE_CELLS,
   GENERATE_CELLS_SUCCEEDED,
@@ -8,7 +8,7 @@ import {
   ADD_PENCIL_MARK,
   REMOVE_PENCIL_MARK
 } from 'redux/actionTypes'
-import * as actions from 'redux/actions/grid'
+import * as actions from 'redux/actions/cells'
 
 const initialState = {
   byId: {
@@ -21,7 +21,7 @@ const initialState = {
   error: null,
 }
 
-describe('grid reducer', () => {
+describe('cells reducer', () => {
   it('returns a state object', () => {
     const result = reducer(undefined, {type: 'ANYTHING'})
     expect(result).toBeDefined()

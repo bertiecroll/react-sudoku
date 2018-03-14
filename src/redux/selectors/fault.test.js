@@ -9,7 +9,7 @@ const state = {
 
 describe('fault selectors', () => {
   describe('#moduleState', () => {
-    it('returns state of grid', () => {
+    it('returns state of fault', () => {
       expect(selectors.moduleState(state)).toEqual(state.fault)
     })
   })

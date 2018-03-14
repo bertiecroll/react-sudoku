@@ -1,5 +1,5 @@
 import { GENERATE_CELLS } from 'redux/actionTypes'
-import { generateCellsSucceeded } from 'redux/actions/grid'
+import { generateCellsSucceeded } from 'redux/actions/cells'
 import { generateCellsMiddleware } from './sodukuMiddleware'
 
 jest.mock('lib/sudoku/sudoku.worker.js');

@@ -1,5 +1,5 @@
 import { GENERATE_CELLS } from 'redux/actionTypes'
-import { generateCellsSucceeded, generateCellsFailed } from 'redux/actions/grid'
+import { generateCellsSucceeded, generateCellsFailed } from 'redux/actions/cells'
 import Worker from 'lib/sudoku/sudoku.worker.js';
 
 export const generateCellsMiddleware = store => next => action => {

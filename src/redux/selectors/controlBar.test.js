@@ -8,7 +8,7 @@ const state = {
 
 describe('controlBar selectors', () => {
   describe('#moduleState', () => {
-    it('returns state of grid', () => {
+    it('returns state of controlBar', () => {
       expect(selectors.moduleState(state)).toEqual(state.controlBar)
     })
   })

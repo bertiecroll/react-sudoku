@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import './PencilMarker.css'
 import NumberSelect from 'components/NumberSelect'
-import { addPencilMark, removePencilMark } from 'redux/actions/grid'
+import { addPencilMark, removePencilMark } from 'redux/actions/cells'
 
 export function PencilMarker ({ addPencilMark, removePencilMark }) {
 
