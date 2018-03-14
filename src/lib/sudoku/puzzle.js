@@ -15,9 +15,9 @@ import {
 
 const DIFFICULTY_LEVELS = {
   'TEST': 80,
-  'EASY': 45,
-  'MEDIUM': 40,
-  'HARD': 35,
+  'EASY': 48,
+  'MEDIUM': 38,
+  'HARD': 29,
 }
 
 export const generatePuzzle = (difficulty= 'EASY') => compose(
@@ -33,33 +33,39 @@ export const confirmUniqueSolution = cells => compose(
   maps.clearAllExcludedValues
 )(cells)
 
-// Recursively traverse cells, adding a value to each cell whilst conforming to the rules of sudoku
+// While loop used to prevent maximum callstack exceeded errors on higher difficulty solutions.
+// Loop traverses cells adding a value to each cell whilst conforming to the rules of sudoku.
 // Optional previous solution can be given to provide base values
-const _generateSolution = (prevSolution= [], position= 0, direction= 1) => cells => {
-  if (position < 0 || position >= cells.length) return cells
+const _generateSolution = (prevSolution= []) => startCells => {
+  let [ cells, position, direction ] = [ startCells, 0, 1 ]
 
-  const cell = cells[position]
-  // If cell completed, no action required, move to nest position
-  if (cell.completed) {
-    return _generateSolution(prevSolution, position + direction, direction)(cells)
-  } else {
-    const updatedCells = (cell.value) ? cellActions.markValueAsExcluded(position, cells) : cells
-    const values = availableValuesForCell(updatedCells[position])(updatedCells)
-    // If multiple available values, remove value from previous solution
-    // Ensures previous solution will not be repeated if possible
-    const updatedValues = (values.length > 1) ? without(valuesForCellId(cell.id)(prevSolution))(values) : values
+  while (position >= 0 && position < cells.length) {
+    const cell = cells[position]
 
-    const [ nextCells, nextDirection ] = _getNextCellsAndDirection(updatedValues, position, updatedCells)
-    return _generateSolution(prevSolution, position + nextDirection, nextDirection)(nextCells)
+    // If cell completed, no action required, move to next position
+    if (!cell.completed) {
+      cells = (cell.value) ? cellActions.markValueAsExcluded(position, cells) : cells
+      const values = availableValuesForCell(cells[position])(cells)
+
+      // If multiple available values, remove value from previous solution
+      // Ensures previous solution will not be repeated if possible
+      const updatedValues = (values.length > 1) ? without(valuesForCellId(cell.id)(prevSolution))(values) : values
+
+      // If no available values, clear excluded values for cell and return to previous position
+      // Else find new value, add to cell and move on to next position
+      if (updatedValues.length === 0) {
+        cells = cellActions.clearExcludedValues(position, cells)
+        direction = -1
+      } else {
+        cells = cellActions.setValue(sample(updatedValues))(position, cells)
+        direction = 1
+      }
+    }
+
+    position += direction
   }
-}
 
-// If no available values, clear excluded values for cell and return to previous position
-// Else find new value, add to cell and move on to next position
-const _getNextCellsAndDirection = (values, position, cells) => {
- return (values.length === 0)
-  ? [ cellActions.clearExcludedValues(position, cells), -1 ]
-  : [ cellActions.setValue(sample(values))(position, cells), 1 ]
+  return cells
 }
 
 // Recursively sets cell pairs as imcomplete until number of completed cells
