@@ -35,7 +35,8 @@ describe('grid reducer', () => {
   })
 
   describe(`${GENERATE_CELLS_SUCCEEDED}`, () => {
-    it('sets fetching to true', () => {
+    it('updates byId and allIds with given cells and sets fetching to false', () => {
+      const fetchingState = { ...initialState, fetching: true }
       const cells = [
         { id: '0,0', completed: true, xCoord: 0, yCoord: 0, value: 1, },
         { id: '1,0', completed: false, xCoord: 1, yCoord: 0, value: 2, },
@@ -52,7 +53,8 @@ describe('grid reducer', () => {
         fetching: false,
         error: null,
       }
-      const result = reducer(initialState, actions.generateCellsSucceeded(cells))
+
+      const result = reducer(fetchingState, actions.generateCellsSucceeded(cells))
       expect(result).toEqual(expectedState)
     })
   })

@@ -11,21 +11,21 @@ import {
   REMOVE_PENCIL_MARK
 } from 'redux/actionTypes'
 
-export const generateCellsById = (state, action) => reduce(
+const generateCellsById = (state, action) => reduce(
   (cellsById, cell) => {
     cellsById[cell.id] = { ...cell, pencilMarks: [] }
     return cellsById
   }, {}
 )(action.cells)
 
-export const generateAllIds = (state, action) => map('id')(action.cells)
+const generateAllIds = (state, action) => map('id')(action.cells)
 
-export const markCellCompleted = (state, action) => ({
+const markCellCompleted = (state, action) => ({
   ...state,
   [action.cellId]: { ...state[action.cellId], completed: true }
 })
 
-export const addPencilMark = (state, action) => {
+const addPencilMark = (state, action) => {
   const cell = state[action.cellId]
   return {
     ...state,
@@ -36,7 +36,7 @@ export const addPencilMark = (state, action) => {
   }
 }
 
-export const removePencilMark = (state, action) => {
+const removePencilMark = (state, action) => {
   const cell = state[action.cellId]
   return {
     ...state,
@@ -75,14 +75,16 @@ const selectedCellId = (state = null, action) => {
 const fetching = (state = false, action) => {
   switch (action.type) {
     case GENERATE_CELLS: return true
-    default: return false
+    case GENERATE_CELLS_SUCCEEDED:
+    case GENERATE_CELLS_FAILED: return false
+    default: return state
   }
 }
 
-const error = (state= null, action) => {
+const error = (state = null, action) => {
   switch(action.type) {
     case GENERATE_CELLS_FAILED: return action.error
-    default: return null
+    default: return state
   }
 }
 
@@ -92,4 +94,4 @@ export default combineReducers({
   selectedCellId,
   fetching,
   error,
-});
+})
