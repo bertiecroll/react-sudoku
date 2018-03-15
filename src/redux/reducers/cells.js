@@ -1,5 +1,7 @@
 import map from 'lodash/fp/map'
 import reduce from 'lodash/fp/reduce'
+import mapValues from 'lodash/fp/mapValues'
+import compose from 'lodash/fp/compose'
 import { combineReducers } from 'redux'
 import {
   GENERATE_CELLS,
@@ -10,6 +12,7 @@ import {
   ADD_PENCIL_MARK,
   REMOVE_PENCIL_MARK
 } from 'redux/actionTypes'
+import { filters } from 'lib/sudoku/grid'
 
 const generateCellsById = (state, action) => reduce(
   (cellsById, cell) => {
@@ -20,10 +23,34 @@ const generateCellsById = (state, action) => reduce(
 
 const generateAllIds = (state, action) => map('id')(action.cells)
 
-const markCellCompleted = (state, action) => ({
+const markCompletedAndRemovePencilMarks = (state, action) => {
+  const cell = state[action.cellId]
+  return compose(
+    removeNeighbouringPencilMarks(cell),
+    markCellCompleted(cell)
+  )(state)
+}
+
+const markCellCompleted = cell => state => ({
   ...state,
-  [action.cellId]: { ...state[action.cellId], completed: true }
+  [cell.id]: { ...state[cell.id], completed: true }
 })
+
+const removeNeighbouringPencilMarks = completedCell => state => {
+  const neighbourIds = _neighbouringCellIds(completedCell)(state)
+
+  return mapValues(cell => (
+    neighbourIds.includes(cell.id) ? _removeCellPencilMark(cell, completedCell.value) : cell
+  ))(state)
+}
+
+const removePencilMark = (state, action) => {
+  const cell = state[action.cellId]
+  return {
+    ...state,
+    [action.cellId]: _removeCellPencilMark(cell, action.value)
+  }
+}
 
 const addPencilMark = (state, action) => {
   const cell = state[action.cellId]
@@ -36,22 +63,21 @@ const addPencilMark = (state, action) => {
   }
 }
 
-const removePencilMark = (state, action) => {
-  const cell = state[action.cellId]
-  return {
-    ...state,
-    [action.cellId]: {
-      ...cell,
-      pencilMarks: cell.pencilMarks.filter(value => value !== action.value)
-    }
-  }
-}
+const _removeCellPencilMark = (cell, valueToRemove) => ({
+    ...cell,
+    pencilMarks: cell.pencilMarks.filter(value => value !== valueToRemove)
+})
+
+const _neighbouringCellIds = cell => compose(
+  map('id'),
+  filters.neighboursForCell(cell)
+)
 
 const byId = (state = {}, action) => {
   switch (action.type) {
     case GENERATE_CELLS_SUCCEEDED: return generateCellsById(state, action)
     case GENERATE_CELLS_FAILED: return state
-    case MARK_CELL_COMPLETED: return markCellCompleted(state, action)
+    case MARK_CELL_COMPLETED: return markCompletedAndRemovePencilMarks(state, action)
     case ADD_PENCIL_MARK: return addPencilMark(state, action)
     case REMOVE_PENCIL_MARK: return removePencilMark(state, action)
     default: return state

@@ -84,6 +84,26 @@ describe('cells reducer', () => {
       const result = reducer(initialState, actions.markCellCompleted('0,1'))
       expect(result.byId).toEqual(expectedState)
     })
+
+    it('removes pencil marks of same value on neighbouring cells', () => {
+      const state = {
+        ...initialState,
+        byId: {
+          ...initialState.byId,
+          '0,2': { id: '0,2', completed: false, xCoord: 0, yCoord: 1, value: 9, pencilMarks: [ 5 ], },
+        },
+        allIds: ['0,0', '0,1', '0,2'],
+      }
+
+      const expectedState = {
+        '0,0': { id: '0,0', completed: true, xCoord: 0, yCoord: 0, value: 8, pencilMarks: [], },
+        '0,1': { id: '0,1', completed: true, xCoord: 0, yCoord: 1, value: 5, pencilMarks: [], },
+        '0,2': { id: '0,2', completed: false, xCoord: 0, yCoord: 1, value: 9, pencilMarks: [], },
+      }
+
+      const result = reducer(state, actions.markCellCompleted('0,1'))
+      expect(result.byId).toEqual(expectedState)
+    })
   })
 
   describe(`${ADD_PENCIL_MARK}`, () => {
