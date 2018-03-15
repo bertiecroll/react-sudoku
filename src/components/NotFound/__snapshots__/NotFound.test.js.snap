@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound renders component content 1`] = `
+<div
+  className="NotFound"
+>
+  <h2>
+    Oops, this ain't no page I ever heard of!
+  </h2>
+  <Link
+    replace={false}
+    to="/"
+  >
+    Return Home
+  </Link>
+</div>
+`;

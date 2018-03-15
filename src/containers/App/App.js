@@ -10,6 +10,7 @@ import './App.css';
 import { AppHeader, AppFooter } from 'containers/App'
 import Puzzle from 'components/Puzzle'
 import Menu from 'components/Menu'
+import NotFound from 'components/NotFound'
 
 export function App () {
   return (
@@ -20,7 +21,7 @@ export function App () {
             <Switch>
               <Route exact path="/" component={Menu} />
               <Route path="/puzzle/:difficultyLevel(test|easy|medium|hard)" component={Puzzle} />
-              <Route render={() => <h1>Page Not Found</h1>} />
+              <Route component={NotFound} />
             </Switch>
           </div>
           <AppFooter />

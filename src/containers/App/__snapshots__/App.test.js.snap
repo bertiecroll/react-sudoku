@@ -20,7 +20,7 @@ exports[`App renders header, footer and switch components 1`] = `
           path="/puzzle/:difficultyLevel(test|easy|medium|hard)"
         />
         <Route
-          render={[Function]}
+          component={[Function]}
         />
       </Switch>
     </div>
