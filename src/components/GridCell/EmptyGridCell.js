@@ -6,7 +6,7 @@ import includes from 'lodash/fp/includes'
 import GridCell from 'components/GridCell'
 
 export function EmptyGridCell ({ cell }) {
-  return <GridCell cell={cell} render={_renderEmptyGridCell} />
+  return <GridCell key={cell.id} cell={cell} render={_renderEmptyGridCell} />
 }
 
 function _renderEmptyGridCell ({ cell, selectedCell, faultCellId, onCellClick }) {

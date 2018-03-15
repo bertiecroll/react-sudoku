@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import GridCell from 'components/GridCell'
 
 export function CompleteGridCell ({ cell }) {
-  return <GridCell cell={cell} render={_renderCompleteGridCell} />
+  return <GridCell key={cell.id} cell={cell} render={_renderCompleteGridCell} />
 }
 
 function _renderCompleteGridCell ({cell, selectedCell, onCellClick }) {
