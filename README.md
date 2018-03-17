@@ -1,5 +1,7 @@
 Sudoku puzzle game created with three difficulty levels. Puzzle solution is created on a dedicated web worker.
 
+Play demo [here](https://react-sudoku-puzzle.herokuapp.com/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 App has been ejected to allow integration of additional npm packages.
 
