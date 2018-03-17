@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Puzzle.css'
@@ -8,9 +8,10 @@ import { cellsByRow } from 'redux/selectors/cells'
 import ControlBar from 'components/ControlBar'
 import ProgressBar from 'components/ProgressBar'
 import Spinner from 'components/Spinner'
+import Result from 'components/Result'
 
 import { generateCells } from 'redux/actions/cells'
-import { isFetching } from 'redux/selectors/cells'
+import { currentStatus, LOADING, IN_PROGRESS, COMPLETED } from 'redux/selectors/cells'
 
 export class Puzzle extends Component {
 
@@ -20,25 +21,33 @@ export class Puzzle extends Component {
   }
 
   render() {
-    return this.props.isLoading
-    ? (
+    const { cellsByRow, puzzleStatus } = this.props
+
+    return (
       <div className="Puzzle">
-        <Spinner />
-      </div>
-    )
-    : (
-      <div className="Puzzle">
-        <ProgressBar />
-        <Grid cellsByRow={this.props.cellsByRow} />
-        <ControlBar />
+        { _puzzleContentToRender(cellsByRow)[puzzleStatus] }
       </div>
     )
   }
 }
 
+const _puzzleContentToRender = cellsByRow => {
+  return {
+    LOADING: <Spinner />,
+    IN_PROGRESS: (
+      <Fragment>
+        <ProgressBar />
+        <Grid cellsByRow={cellsByRow} />
+        <ControlBar />
+      </Fragment>
+    ),
+    COMPLETED: <Result />
+  }
+}
+
 const mapStateToProps = state => ({
   cellsByRow: cellsByRow(state),
-  isLoading: isFetching(state),
+  puzzleStatus: currentStatus(state),
 })
 
 const mapDispatchToProps = { generateCells }
@@ -46,9 +55,11 @@ const mapDispatchToProps = { generateCells }
 export default connect(mapStateToProps, mapDispatchToProps)(Puzzle)
 
 Puzzle.defaultProps = {
-  cellsByRow: {}
+  cellsByRow: {},
+  puzzleStatus: LOADING,
 }
 
 Puzzle.propTypes = {
   cellsByRow: PropTypes.object.isRequired,
+  puzzleStatus: PropTypes.oneOf([LOADING, IN_PROGRESS, COMPLETED]),
 }

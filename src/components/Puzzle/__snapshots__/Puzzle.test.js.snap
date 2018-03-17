@@ -1,80 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Puzzle renders ProgressBar, Grid and Control Bar when props.isLoading is false 1`] = `
-<Router
-  history={
-    Object {
-      "action": "POP",
-      "block": [Function],
-      "canGo": [Function],
-      "createHref": [Function],
-      "entries": Array [
-        Object {
-          "hash": "",
-          "key": "TestKey",
-          "pathname": "/",
-          "search": "",
-        },
-      ],
-      "go": [Function],
-      "goBack": [Function],
-      "goForward": [Function],
-      "index": 0,
-      "length": 1,
-      "listen": [Function],
-      "location": Object {
-        "hash": "",
-        "key": "TestKey",
-        "pathname": "/",
-        "search": "",
-      },
-      "push": [Function],
-      "replace": [Function],
-    }
-  }
+exports[`Puzzle renders ProgressBar, Grid and Control Bar when props.puzzleStatus is IN_PROGRESS 1`] = `
+<div
+  className="Puzzle"
 >
-  <Puzzle
-    cellsByRow={Object {}}
-  />
-</Router>
+  <React.Fragment>
+    <ProgressBar />
+    <Grid
+      cellsByRow={Object {}}
+    />
+    <Connect(ControlBar) />
+  </React.Fragment>
+</div>
 `;
 
-exports[`Puzzle renders Spinner component when props.isLoading is true 1`] = `
-<Router
-  history={
-    Object {
-      "action": "POP",
-      "block": [Function],
-      "canGo": [Function],
-      "createHref": [Function],
-      "entries": Array [
-        Object {
-          "hash": "",
-          "key": "TestKey",
-          "pathname": "/",
-          "search": "",
-        },
-      ],
-      "go": [Function],
-      "goBack": [Function],
-      "goForward": [Function],
-      "index": 0,
-      "length": 1,
-      "listen": [Function],
-      "location": Object {
-        "hash": "",
-        "key": "TestKey",
-        "pathname": "/",
-        "search": "",
-      },
-      "push": [Function],
-      "replace": [Function],
-    }
-  }
+exports[`Puzzle renders Result when props.puzzleStatus is COMPLETED 1`] = `
+<div
+  className="Puzzle"
 >
-  <Puzzle
-    cellsByRow={Object {}}
-    isLoading={true}
-  />
-</Router>
+  <Result />
+</div>
+`;
+
+exports[`Puzzle renders Spinner component when props.puzzleStatus is LOADING 1`] = `
+<div
+  className="Puzzle"
+>
+  <Spinner />
+</div>
 `;

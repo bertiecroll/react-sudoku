@@ -1,26 +1,29 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { MemoryRouter } from 'react-router-dom'
 import { Puzzle } from 'components/Puzzle'
 
-const initialEntries = [{ pathname: '/', key: 'TestKey' }]
+const routerMatch = { params: { difficultyLevel: 'test ' } }
+const mockGenerateCells = jest.fn()
 
 describe('Puzzle', () => {
-  it('renders Spinner component when props.isLoading is true', () => {
+  it('renders Spinner component when props.puzzleStatus is LOADING', () => {
     const wrapper = shallow(
-      <MemoryRouter initialEntries={initialEntries} >
-        <Puzzle isLoading />
-      </MemoryRouter>
+      <Puzzle puzzleStatus='LOADING' match={routerMatch} generateCells={mockGenerateCells} />
     )
 
     expect(wrapper).toMatchSnapshot()
   })
 
-  it('renders ProgressBar, Grid and Control Bar when props.isLoading is false', () => {
+  it('renders ProgressBar, Grid and Control Bar when props.puzzleStatus is IN_PROGRESS', () => {
     const wrapper = shallow(
-      <MemoryRouter initialEntries={initialEntries} >
-        <Puzzle />
-      </MemoryRouter>
+        <Puzzle puzzleStatus='IN_PROGRESS' match={routerMatch} generateCells={mockGenerateCells} />
+    )
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  it('renders Result when props.puzzleStatus is COMPLETED', () => {
+    const wrapper = shallow(
+      <Puzzle puzzleStatus='COMPLETED' match={routerMatch} generateCells={mockGenerateCells} />
     )
     expect(wrapper).toMatchSnapshot()
   })
