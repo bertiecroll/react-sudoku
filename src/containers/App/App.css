@@ -11,6 +11,7 @@
 }
 
 .AppHeader {
+  min-height: 4em;
   display: flex;
   font-variant: small-caps;
   padding: .5em;
@@ -25,17 +26,23 @@
 .AppFooter {
   flex-shrink: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-variant: small-caps;
   padding: .5em;
   background-color: #999;
 }
 
-.AppFooter a {
-  margin: 1em 3em;
+.AppFooter .footer-links {
+  padding: 1em;
 }
 
-.AppFooter a:hover {
+.footer-links a {
+  margin: 1em;
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-links a:hover {
   cursor: pointer;
 }
 
