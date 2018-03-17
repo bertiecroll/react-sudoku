@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Result renders component content 1`] = `
+<div
+  className="Result"
+>
+  <h2>
+    Well Done!
+  </h2>
+  <p>
+    Puzzle completed
+  </p>
+  <Link
+    replace={false}
+    to="/"
+  >
+    Play Again
+  </Link>
+</div>
+`;
