@@ -19,6 +19,21 @@ const state = {
   }
 }
 
+const fetchingState = { ...state, cells: { ...state.cells, fetching: true } }
+
+const allCompletedState = {
+  cells: {
+    byId: {
+      '0,0': { id: '0,0', completed: true, xCoord: 0, yCoord: 0, value: 1, pencilMarks: [], },
+      '0,1': { id: '0,1', completed: true, xCoord: 0, yCoord: 1, value: 2, pencilMarks: [], },
+      '0,2': { id: '0,2', completed: true, xCoord: 0, yCoord: 2, value: 3, pencilMarks: [], },
+    },
+    selectedCellId: '1,0',
+    fetching: false,
+    error: null
+  }
+}
+
 describe('cells selectors', () => {
   describe('#moduleState', () => {
     it('returns state of cells', () => {
@@ -56,6 +71,16 @@ describe('cells selectors', () => {
     })
   })
 
+  describe('#areAllCellsCompleted', () => {
+    it('returns true if every cell in cellsById are completed', () => {
+      expect(selectors.areAllCellsCompleted(allCompletedState)).toEqual(true)
+    })
+
+    it('returns false if one or more cells in cellsById are not completed', () => {
+      expect(selectors.areAllCellsCompleted(state)).toEqual(false)
+    })
+  })
+
   describe('#selectedCellId', () => {
     it('returns selected cell Id', () => {
       expect(selectors.selectedCellId(state)).toEqual(state.cells.selectedCellId)
@@ -84,8 +109,6 @@ describe('cells selectors', () => {
   describe('#isFetching', () => {
     it('returns fetching boolean state', () => {
       expect(selectors.isFetching(state)).toEqual(false)
-
-      const fetchingState = { ...state, cells: { ...state.cells, fetching: true } }
       expect(selectors.isFetching(fetchingState)).toEqual(true)
     })
   })
@@ -96,6 +119,20 @@ describe('cells selectors', () => {
 
       const errorState = { ...state, cells: { ...state.cells, error: 'Test Error' } }
       expect(selectors.errorMessage(errorState)).toEqual('Test Error')
+    })
+  })
+
+  describe('#currentStatus', () => {
+    it('returns LOADING when fetching is true', () => {
+      expect(selectors.currentStatus(fetchingState)).toEqual(selectors.LOADING)
+    })
+
+    it('returns COMPLETED when fetching is false and areAllCellsCompleted is true', () => {
+      expect(selectors.currentStatus(allCompletedState)).toEqual(selectors.COMPLETED)
+    })
+
+    it('returns IN_PROGRESS when fetching and areAllCellsCompleted are both false', () => {
+      expect(selectors.currentStatus(state)).toEqual(selectors.IN_PROGRESS)
     })
   })
 })
