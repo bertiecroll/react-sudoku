@@ -4,13 +4,11 @@ exports[`Puzzle renders ProgressBar, Grid and Control Bar when props.puzzleStatu
 <div
   className="Puzzle"
 >
-  <React.Fragment>
-    <ProgressBar />
-    <Grid
-      cellsByRow={Object {}}
-    />
-    <Connect(ControlBar) />
-  </React.Fragment>
+  <ProgressBar />
+  <Grid
+    cellsByRow={Object {}}
+  />
+  <Connect(ControlBar) />
 </div>
 `;
 
